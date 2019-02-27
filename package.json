@@ -12,7 +12,7 @@
     "build": "tsc",
     "docs": "typedoc --out docs --target es6 --theme minimal --mode file src",
     "predockerBuild": "npm run build",
-    "dockerBuild": "docker build -t fmillone/express-proxy:latest ."
+    "dockerBuild": "docker build -t fmillone/simple-express-proxy:latest ."
   },
   "keywords": [],
   "author": "Francisco Millone",
