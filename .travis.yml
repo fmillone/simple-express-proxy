@@ -1,0 +1,19 @@
+language: node_js
+node_js:
+  - "11"
+services:
+  - docker
+before_script:
+  - npm install
+
+script:
+  - npm run build
+  - npm run test
+
+deploy:
+  skip_cleanup: true
+  provider: script
+  script: sh docker-deploy.sh $TRAVIS_TAG
+  on:
+    tags: true
+
