@@ -10,8 +10,9 @@ script:
   - npm run build
   - npm run test
 
-after_success:
-  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USER" --password-stdin
-#  - docker build -t fmillone/simple-express-proxy:latest .
-#  - docker push fmillone/simple-express-proxy
+deploy:
+  provider: script
+  script: sh docker-deploy.sh $TRAVIS_TAG
+  on:
+    tags: true
 
