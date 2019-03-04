@@ -1,1 +1,1 @@
-export * from "./SimpleExpressProxy";
+export * from './SimpleExpressProxy';

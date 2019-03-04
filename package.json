@@ -1,13 +1,13 @@
 {
   "name": "simple-express-proxy",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "description": "A simple express app wich serves static resources and proxy requests from /api/**",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
     "test": "jest --coverage",
     "test:watch": "jest --coverage --watch",
-    "test:prod": "npm run lint && npm run test -- --no-cache",
+    "lint": "tslint --project .",
     "prebuild": "rimraf dist",
     "build": "tsc",
     "docs": "typedoc --out docs --target es6 --theme minimal --mode file src",

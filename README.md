@@ -22,7 +22,14 @@ ENV PORT=4200
 * **INDEX_FILE**: the default index file to return in case the requested path does not exist under the public folder. Defaults to `index.html`
 * **PROXY_PATH**: the base endpoint which will handle the requests to proxy. Defaults to `/api`
 
-## TODO:
 
-* Add prefix to redirect 
-* ~~Externalize base proxy path : defaults to `/api/*`~~
+### Note: 
+
+You can redirect the requests against `/${PROXY_PATH}` to some endpoint just by setting a prefix on `PROXY_TO`
+
+e.g: 
+```
+ENV PROXY_PATH=/api
+ENV PROXY_TO=10.17.25.12:8080/api/v2
+```
+Will redirect the requests made to `/api` to `/api/v2` on the host.
