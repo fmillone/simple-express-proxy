@@ -11,24 +11,19 @@ describe("SimpleExpressProxy", () => {
 
     it("works if true is truthy", () => {
         expect(true).toBeTruthy()
-    })
+    });
 
     it("SimpleExpressProxy is instantiable", () => {
-        expect(new SimpleExpressProxy({
-            port: 3000,
-            backend: 'localhost:3000',
-            publicFolderPath: '/some/path/to/public/folder',
-            indexFile: 'index.html'
-        })).toBeInstanceOf(SimpleExpressProxy)
-    })
+        expect(SimpleExpressProxy.withDefaultConfig())
+            .toBeInstanceOf(SimpleExpressProxy);
+    });
 
     it('should start and stop the server', async () => {
         const port = randomPort();
-        const proxy = new SimpleExpressProxy({
+        const proxy = SimpleExpressProxy.withDefaultConfig({
             port: port,
-            backend: `localhost:${port}`,
-            publicFolderPath: 'some/path/to/public/folder',
-            indexFile: 'index.html'
+            backend: `127.0.0.1:${port}`,
+            publicFolderPath: 'some/path/to/public/folder'
         });
 
         await proxy.start(
@@ -39,12 +34,10 @@ describe("SimpleExpressProxy", () => {
     it('should return the default index', async ()=> {
         // given
         const port = randomPort();
-        console.log(join(__dirname, 'public'))
-        const proxy = new SimpleExpressProxy({
+        const proxy = SimpleExpressProxy.withDefaultConfig({
             port: port,
-            backend: `localhost:${port}`,
-            publicFolderPath: join(__dirname, '..', 'public'),
-            indexFile: 'index.html'
+            backend: `127.0.0.1:${port}`,
+            publicFolderPath: join(__dirname, '..', 'public')
         });
         // then
         await request(proxy.app)

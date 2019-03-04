@@ -20,3 +20,9 @@ ENV PORT=4200
 * **PROXY_TO**: host and port of the backend you want to proxy the requests to
 * **PORT**: the port wich the express app will listen. Defaults to `3000`
 * **INDEX_FILE**: the default index file to return in case the requested path does not exist under the public folder. Defaults to `index.html`
+* **PROXY_PATH**: the base endpoint which will handle the requests to proxy. Defaults to `/api`
+
+## TODO:
+
+* Add prefix to redirect 
+* ~~Externalize base proxy path : defaults to `/api/*`~~
